@@ -44,6 +44,7 @@ dependencies:
   firebase_ai: ^4.0.0
   firebase_app_check: ^0.4.8
   google_maps_flutter: ^2.19.0
+  fl_chart: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
   # lib/features/ai_validation/README.md). Photos are git-ignored.
   assets:
     - assets/dev_samples/
+    - assets/data/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

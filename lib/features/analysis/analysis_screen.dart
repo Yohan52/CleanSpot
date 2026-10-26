@@ -25,50 +25,43 @@ const List<DistrictAnalysis> _districtRankings = [
     name: 'Colombo',
     cases: 120,
     weeklyCases: [0, 24, 12, 60, 95, 120],
-    trendSummary:
-        'Demo trend rises in recent weeks. A rise in cases can signal a need for extra prevention; it does not predict individual risk.',
+    trendSummary: 'Demo trend rises in recent weeks. A rise in cases can signal a need for extra prevention; it does not predict individual risk.',
   ),
   DistrictAnalysis(
     name: 'Gampaha',
     cases: 104,
     weeklyCases: [12, 20, 30, 48, 76, 104],
-    trendSummary:
-        'Urban areas report an increase in high-risk containers. Weekly inspections are highly recommended.',
+    trendSummary: 'Urban areas report an increase in high-risk containers. Weekly inspections are highly recommended.',
   ),
   DistrictAnalysis(
     name: 'Kalutara',
     cases: 88,
     weeklyCases: [8, 14, 25, 42, 64, 88],
-    trendSummary:
-        'Coastal rainfall patterns correlate with slight increases in mosquito breeding sites.',
+    trendSummary: 'Coastal rainfall patterns correlate with slight increases in mosquito breeding sites.',
   ),
   DistrictAnalysis(
     name: 'Kandy',
     cases: 72,
     weeklyCases: [14, 18, 26, 38, 52, 72],
-    trendSummary:
-        'Moderate case numbers across central valleys. Maintain clean gutters and roof drainage.',
+    trendSummary: 'Moderate case numbers across central valleys. Maintain clean gutters and roof drainage.',
   ),
   DistrictAnalysis(
     name: 'Galle',
     cases: 65,
     weeklyCases: [10, 16, 22, 34, 48, 65],
-    trendSummary:
-        'Southern coastal districts continue routine larviciding and public awareness drives.',
+    trendSummary: 'Southern coastal districts continue routine larviciding and public awareness drives.',
   ),
   DistrictAnalysis(
     name: 'Ratnapura',
     cases: 54,
     weeklyCases: [8, 12, 18, 28, 40, 54],
-    trendSummary:
-        'Gem pit and agricultural areas require special attention to prevent stagnant water pooling.',
+    trendSummary: 'Gem pit and agricultural areas require special attention to prevent stagnant water pooling.',
   ),
   DistrictAnalysis(
     name: 'Kurunegala',
     cases: 48,
     weeklyCases: [6, 10, 15, 24, 35, 48],
-    trendSummary:
-        'Coconut plantation water storage containers monitored for mosquito larvae.',
+    trendSummary: 'Coconut plantation water storage containers monitored for mosquito larvae.',
   ),
   DistrictAnalysis(
     name: 'Matara',
@@ -88,8 +81,7 @@ const List<DistrictAnalysis> _districtRankings = [
     name: 'Badulla',
     cases: 28,
     weeklyCases: [3, 6, 9, 14, 20, 28],
-    trendSummary:
-        'High elevation zones show low overall vector density.',
+    trendSummary: 'High elevation zones show low overall vector density.',
   ),
 ];
 
@@ -232,10 +224,10 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                       'Dengue Analysis',
                       style: (textTheme.headlineMedium ?? AppTypography.title)
                           .copyWith(
-                        color: AppColors.textPrimary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 28,
-                      ),
+                            color: AppColors.textPrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                          ),
                     ),
                   ),
                 ],
@@ -254,8 +246,7 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
               // Disclaimer Note
               const InfoNote(
-                text:
-                    'Placeholder charts · Not verified Sri Lankan statistics · Scroll for all insights',
+                text: 'Placeholder charts · Not verified Sri Lankan statistics · Scroll for all insights',
               ),
               const SizedBox(height: 20),
 
@@ -264,8 +255,10 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                 onTap: _showDistrictPicker,
                 borderRadius: BorderRadius.circular(16),
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 14,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.surface,
                     borderRadius: BorderRadius.circular(16),
@@ -283,10 +276,10 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
                         '${_selectedDistrict.name} · Demo',
                         style: (textTheme.bodyLarge ?? AppTypography.body)
                             .copyWith(
-                          color: AppColors.textPrimary,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                              color: AppColors.textPrimary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                       ),
                       const Spacer(),
                       const Icon(
@@ -313,8 +306,7 @@ class _AnalysisScreenState extends State<AnalysisScreen> {
 
               // Prevention Tip Banner
               const TipBanner(
-                text:
-                    'Prevention insight: Eliminating stagnant water weekly breaks the 7-day Aedes mosquito breeding cycle. Stay protected during peak biting hours.',
+                text: 'Prevention insight: Eliminating stagnant water weekly breaks the 7-day Aedes mosquito breeding cycle. Stay protected during peak biting hours.',
               ),
               const SizedBox(height: 20),
             ],
@@ -398,9 +390,7 @@ class _TrendLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _TrendChartPainter(dataPoints: dataPoints),
-    );
+    return CustomPaint(painter: _TrendChartPainter(dataPoints: dataPoints));
   }
 }
 
@@ -441,7 +431,10 @@ class _TrendChartPainter extends CustomPainter {
       )..layout();
       textPainter.paint(
         canvas,
-        Offset(leftPadding - textPainter.width - 10, y - textPainter.height / 2),
+        Offset(
+          leftPadding - textPainter.width - 10,
+          y - textPainter.height / 2,
+        ),
       );
 
       // Grid line
@@ -460,7 +453,8 @@ class _TrendChartPainter extends CustomPainter {
     // Compute coordinate points
     for (int i = 0; i < dataPoints.length; i++) {
       final x = leftPadding + (i * stepX);
-      final normalizedY = (dataPoints[i].clamp(0, maxVal) / maxVal) * chartHeight;
+      final normalizedY =
+          (dataPoints[i].clamp(0, maxVal) / maxVal) * chartHeight;
       final y = chartHeight - normalizedY;
       points.add(Offset(x, y));
 
@@ -526,7 +520,9 @@ class _TopDistrictsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final maxCases = districts.map((d) => d.cases).fold<int>(1, (a, b) => a > b ? a : b);
+    final maxCases = districts
+        .map((d) => d.cases)
+        .fold<int>(1, (a, b) => a > b ? a : b);
 
     return Container(
       width: double.infinity,
@@ -581,8 +577,9 @@ class _TopDistrictsCard extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: AppTypography.fontFamily,
                         fontSize: 14,
-                        fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.w500,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.w500,
                         color: isSelected
                             ? AppColors.primaryDark
                             : AppColors.textPrimary,
