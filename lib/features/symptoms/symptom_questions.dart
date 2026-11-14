@@ -1,4 +1,6 @@
 /// lib/features/symptoms/symptom_questions.dart
+library;
+
 import 'package:flutter/material.dart';
 
 /// App colour palette (shared by all three symptom files).
@@ -31,12 +33,8 @@ const List<SymptomQuestion> symptomQuestions = [
   SymptomQuestion(
     question: "Do you have a severe headache or pain behind your eyes?",
   ),
-  SymptomQuestion(
-    question: "Do you have muscle or joint pain?",
-  ),
-  SymptomQuestion(
-    question: "Are you experiencing nausea or vomiting?",
-  ),
+  SymptomQuestion(question: "Do you have muscle or joint pain?"),
+  SymptomQuestion(question: "Are you experiencing nausea or vomiting?"),
 ];
 
 // Shown AFTER the 4 questions as a tick-list (not a question).
